@@ -24,12 +24,12 @@ namespace itis {
   std::optional<std::string> HashTable::Search(int key) const {
     int index = hash(key);
     Bucket bucket = buckets_[index];
-      for (std::pair<int, std::string> pair: bucket){
-          if (pair.first == key) {
-              return pair.second;
-          }
-      }
-      return std::nullopt;
+    for (const auto &pair : bucket){
+        if (pair.first == key) {
+            return pair.second;
+        }
+    }
+    return std::nullopt;
   }
 
   void HashTable::Put(int key, const std::string &value) {
